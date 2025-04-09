@@ -1,0 +1,14 @@
+.each-tab {
+  list-style-type: none;
+}
+.tab-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: #000000;
+}
+.active-tab-btn {
+  color: orangered;
+  border-bottom: 1px solid orangered;
+}

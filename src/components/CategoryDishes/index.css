@@ -1,0 +1,85 @@
+.each-dish {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid gray;
+  margin: 10px;
+  border-radius: 10px;
+}
+.dish-cat-container {
+  display: flex;
+  width: 650px;
+}
+@media screen and (max-width: 767px) {
+  .dish-cat-container {
+    width: 200px;
+  }
+}
+.dish-details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  margin-left: 10px;
+}
+.dish-add-remove-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #249443;
+  border-radius: 20px;
+  width: 150px;
+}
+.dish-image {
+  width: 100px;
+}
+.green {
+  color: #249443;
+  font-size: 30px;
+}
+.red {
+  color: #a51622;
+  font-size: 30px;
+}
+.add-remove-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+}
+.dish-count {
+  color: #ffffff;
+  font-size: 20px;
+}
+.dish-name {
+  color: #000000;
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.dish-price {
+  color: #808080;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.dish-description {
+  color: #a8a7a3;
+  font-size: 15px;
+}
+.not-available {
+  font-size: 15px;
+  color: #e71727;
+}
+.custom {
+  font-size: 15px;
+  color: blue;
+}
+.calories {
+  color: #ffa500;
+  font-size: 20px;
+  font-weight: bold;
+}
