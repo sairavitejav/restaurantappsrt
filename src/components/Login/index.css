@@ -1,0 +1,73 @@
+.restaurant-login-container {
+  background-image: url('https://res.cloudinary.com/dxi9xkgna/image/upload/v1744699324/restabg_wlfu0v.avif');
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.restaurant-header {
+  color: #ffffff;
+  font-size: 40px;
+}
+.login-header {
+  color: #003366;
+  font-size: 30px;
+  margin-top: 5px;
+  text-align: center;
+}
+.login-form {
+  background-image: url('https://res.cloudinary.com/dxi9xkgna/image/upload/v1744698041/formbg_zjsq6h.webp');
+  background-size: cover;
+  min-height: 450px;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  border-radius: 20px;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.input-label {
+  color: #000000;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.input {
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #1c1c1c;
+}
+.login-btn-container {
+  display: flex;
+  justify-content: center;
+}
+.login-button {
+  background-color: #ff6f00;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100px;
+  color: #ffffff;
+  margin: 10px;
+}
+.error {
+  color: #c62828;
+  font-size: 25px;
+  font-weight: bold;
+}
+.check-container {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,32 @@
+.cart-list-items {
+  margin: 20px;
+  list-style-type: none;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #000000;
+}
+.cart-dish-img {
+  width: 100px;
+}
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.detail-contain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quant {
+  margin: 2px;
+  border: none;
+  outline: none;
+  background-color: #ff6f00;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+}

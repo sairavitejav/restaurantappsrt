@@ -14,10 +14,9 @@ const apiStatusConstants = {
 
 const Home = () => {
   const [restaurantMenuList, setRestaurantMenu] = useState([])
-  const [restaurant, setRestaurant] = useState('')
   const [activeTab, setActiveTab] = useState('')
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
-  const [cartList, setCartList] = useState([])
+
   const getRestaurantMenu = async () => {
     setApiStatus(apiStatusConstants.loading)
     const apiUrl =
@@ -28,9 +27,8 @@ const Home = () => {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
-      const restaurantName = data[0].restaurant_name
-      setRestaurant(restaurantName)
+      // console.log(data)
+
       const menuList = data[0].table_menu_list.map(item => ({
         menuCategory: item.menu_category,
         menuCategoryId: item.menu_category_id,
@@ -54,6 +52,7 @@ const Home = () => {
       setApiStatus(apiStatusConstants.failure)
     }
   }
+
   useEffect(() => {
     getRestaurantMenu()
   }, [])
@@ -70,37 +69,6 @@ const Home = () => {
     ? activeCategoryList.categoryDishes
     : []
 
-  const addToCart = dish => {
-    const isAlreadyExist = cartList.find(item => item.dishId === dish.dishId)
-    if (!isAlreadyExist) {
-      const newDish = {...dish, quantity: 1}
-      setCartList(prev => [...prev, newDish])
-    } else {
-      setCartList(prev =>
-        prev.map(item =>
-          item.dishId === dish.dishId
-            ? {...item, quantity: item.quantity + 1}
-            : item,
-        ),
-      )
-    }
-  }
-
-  const removeFromCart = dish => {
-    const isAlreadyExist = cartList.find(item => item.dishId === dish.dishId)
-    if (isAlreadyExist) {
-      setCartList(prev =>
-        prev
-          .map(item =>
-            item.dishId === dish.dishId
-              ? {...item, quantity: item.quantity - 1}
-              : item,
-          )
-          .filter(item => item.quantity > 0),
-      )
-    }
-  }
-
   const renderFailureView = () => (
     <div>
       <p>OOPS SOMETHING WENT WRONG</p>
@@ -115,7 +83,7 @@ const Home = () => {
 
   const renderSuccessView = () => (
     <>
-      <Header cartList={cartList} restaurant={restaurant} />
+      <Header />
       <ul className="tabs-container">
         {restaurantMenuList.map(tabs => (
           <CategoryTabs
@@ -129,13 +97,7 @@ const Home = () => {
 
       <ul>
         {categoryDishesList.map(dishItems => (
-          <CategoryDishes
-            dishItems={dishItems}
-            addToCart={addToCart}
-            removeFromCart={removeFromCart}
-            cartList={cartList}
-            key={dishItems.dishId}
-          />
+          <CategoryDishes dishItems={dishItems} key={dishItems.dishId} />
         ))}
       </ul>
     </>

@@ -1,10 +1,13 @@
+import {useState, useContext} from 'react'
 import {BiFoodTag} from 'react-icons/bi'
+import CartContext from '../../context/CartContext'
 import './index.css'
 
 const CategoryDishes = props => {
-  const {dishItems, addToCart, removeFromCart, cartList} = props
+  const [quantity, setQuantity] = useState(0)
+  const {addCartItems} = useContext(CartContext)
+  const {dishItems} = props
   const {
-    dishId,
     dishType,
     dishName,
     dishPrice,
@@ -18,15 +21,17 @@ const CategoryDishes = props => {
   const dishTypeClass = dishType === 2 ? 'green' : 'red'
 
   const increaseQuantity = () => {
-    addToCart(dishItems)
+    setQuantity(prevQuantity => prevQuantity + 1)
   }
 
   const decreaseQuantity = () => {
-    removeFromCart(dishItems)
+    setQuantity(prevQuantity => (prevQuantity > 0 ? prevQuantity - 1 : 0))
   }
-  const quantity = () => {
-    const cartQuantity = cartList.find(item => item.dishId === dishId)
-    return cartQuantity ? cartQuantity.quantity : 0
+
+  const addToCart = () => {
+    if (quantity > 0) {
+      addCartItems({...dishItems, quantity})
+    }
   }
 
   return (
@@ -42,23 +47,31 @@ const CategoryDishes = props => {
           </p>
           <p className="dish-description">{dishDescription}</p>
           {dishAvailability ? (
-            <div className="dish-add-remove-btn-container">
-              <button
-                onClick={decreaseQuantity}
-                className="add-remove-btn"
-                type="button"
-              >
-                -
-              </button>
-              <p className="dish-count">{quantity()}</p>
-              <button
-                onClick={increaseQuantity}
-                className="add-remove-btn"
-                type="button"
-              >
-                +
-              </button>
-            </div>
+            <>
+              <div className="dish-add-remove-btn-container">
+                <button
+                  onClick={decreaseQuantity}
+                  className="add-remove-btn"
+                  type="button"
+                  disabled={quantity === 0}
+                >
+                  -
+                </button>
+                <p className="dish-count">{quantity}</p>
+                <button
+                  onClick={increaseQuantity}
+                  className="add-remove-btn"
+                  type="button"
+                >
+                  +
+                </button>
+              </div>
+              {quantity > 0 && (
+                <button onClick={addToCart} type="button" className="cart-btn">
+                  ADD TO CART
+                </button>
+              )}
+            </>
           ) : (
             <p className="not-available">Not available</p>
           )}
